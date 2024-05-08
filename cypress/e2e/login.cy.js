@@ -16,12 +16,16 @@ describe('Login spec', () => {
     // memverifikasi elemen yang harus tampak pada halaman login
     cy.get('input[placeholder="Username"]').should('be.visible');
     cy.get('input[placeholder="Password"]').should('be.visible');
-    cy.get('button').contains(/^Login$/).should('be.visible');
+    cy.get('button')
+      .contains(/^Login$/)
+      .should('be.visible');
   });
 
   it('should display alert when username is empty', () => {
     // klik tombol login tanpa mengisi username
-    cy.get('button').contains(/^Login$/).click();
+    cy.get('button')
+      .contains(/^Login$/)
+      .click();
 
     // memverifikasi window.alert untuk menampilkan pesan dari API
     cy.on('window:alert', (str) => {
@@ -34,7 +38,9 @@ describe('Login spec', () => {
     cy.get('input[placeholder="Username"]').type('testuser');
 
     // klik tombol login tanpa mengisi password
-    cy.get('button').contains(/^Login$/).click();
+    cy.get('button')
+      .contains(/^Login$/)
+      .click();
 
     // memverifikasi window.alert untuk menampilkan pesan dari API
     cy.on('window:alert', (str) => {
@@ -50,7 +56,9 @@ describe('Login spec', () => {
     cy.get('input[placeholder="Password"]').type('wrong_password');
 
     // menekan tombol Login
-    cy.get('button').contains(/^Login$/).click();
+    cy.get('button')
+      .contains(/^Login$/)
+      .click();
 
     // memverifikasi window.alert untuk menampilkan pesan dari API
     cy.on('window:alert', (str) => {
@@ -66,10 +74,14 @@ describe('Login spec', () => {
     cy.get('input[placeholder="Password"]').type('test123456');
 
     // menekan tombol Login
-    cy.get('button').contains(/^Login$/).click();
+    cy.get('button')
+      .contains(/^Login$/)
+      .click();
 
-    // memverifikasi bahwa elemen yang berada di homepage ditampilkan
-    cy.get('nav').contains(/^Home$/).should('be.visible');
+    // mem-verifikasi bahwa elemen yang berada di homepage ditampilkan
+    cy.get('nav')
+      .contains(/^Home$/)
+      .should('be.visible');
     cy.get('button').contains('Sign out').should('be.visible');
   });
 });
